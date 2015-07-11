@@ -1,3 +1,6 @@
 [submodule "externals/bootstrap"]
 	path = externals/bootstrap
 	url = https://github.com/twbs/bootstrap
+[submodule "externals/fontawesome"]
+	path = externals/fontawesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
