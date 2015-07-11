@@ -1,0 +1,77 @@
+// Based on Bootstrap-3.3.4, main entry point for 
+// my new website design at Goethe University
+
+@bootstrap: "../externals/bootstap/less";
+@fontawesome: "../externals/fontawesome/less";
+
+// Core variables and mixins
+@import "@{bootstrap}/mixins.less";
+@import "bootstrap-variables.less";
+
+// Reset and dependencies
+@import "@{bootstrap}/normalize.less";
+@import "@{bootstrap}/print.less";
+//@import "@{bootstrap}/glyphicons.less"; // see fa below
+
+// Core CSS
+@import "@{bootstrap}/scaffolding.less";
+@import "@{bootstrap}/type.less";
+//@import "@{bootstrap}/code.less";
+@import "@{bootstrap}/grid.less";
+@import "@{bootstrap}/tables.less";
+@import "@{bootstrap}/forms.less";
+@import "@{bootstrap}/buttons.less";
+
+// Components
+@import "@{bootstrap}/component-animations.less";
+@import "@{bootstrap}/dropdowns.less";
+@import "@{bootstrap}/button-groups.less";
+//@import "@{bootstrap}/input-groups.less";
+@import "@{bootstrap}/navs.less";
+@import "@{bootstrap}/navbar.less";
+//@import "@{bootstrap}/breadcrumbs.less";
+//@import "@{bootstrap}/pagination.less";
+//@import "@{bootstrap}/pager.less";
+@import "@{bootstrap}/labels.less";
+@import "@{bootstrap}/badges.less";
+@import "@{bootstrap}/jumbotron.less";
+@import "@{bootstrap}/thumbnails.less";
+@import "@{bootstrap}/alerts.less";
+//@import "@{bootstrap}/progress-bars.less";
+@import "@{bootstrap}/media.less";
+@import "@{bootstrap}/list-group.less";
+@import "@{bootstrap}/panels.less";
+//@import "@{bootstrap}/responsive-embed.less";
+//@import "@{bootstrap}/wells.less";
+@import "@{bootstrap}/close.less";
+
+// Components w/ JavaScript
+@import "@{bootstrap}/modals.less";
+//@import "@{bootstrap}/tooltip.less";
+//@import "@{bootstrap}/popovers.less";
+//@import "@{bootstrap}/carousel.less";
+
+// Utility classes
+@import "@{bootstrap}/utilities.less";
+@import "@{bootstrap}/responsive-utilities.less";
+
+// Font Awesome icons instead of glyphicons
+@import "fontawesome-variables.less";
+
+@import "@{fontawesome}/mixins.less";
+@import "@{fontawesome}/path.less";
+@import "@{fontawesome}/core.less";
+@import "@{fontawesome}/larger.less";
+@import "@{fontawesome}/fixed-width.less";
+@import "@{fontawesome}/list.less";
+@import "@{fontawesome}/bordered-pulled.less";
+@import "@{fontawesome}/animated.less";
+@import "@{fontawesome}/rotated-flipped.less";
+@import "@{fontawesome}/stacked.less";
+@import "@{fontawesome}/icons.less";
+
+// Goethe University styles
+@import "mixins-and-fixes.less";
+@import "gu-design.less";
+@import "panels.less";
+@import "dynamic.less";

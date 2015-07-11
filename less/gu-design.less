@@ -1,0 +1,394 @@
+/**
+ * Neues Design der Goethe-Universitaet als Bootstrap-Layout.
+ * Diese LESS-File nutzt custom-bootstrap-variables.less, etc.
+ *
+ **/
+
+
+//// == Sheet and overall page spacings.
+// This is a big difference to the GU web design which works with a
+// fixed with of 1085px. I want a flexible layout using the full browser
+// width with a reasonable 10% padding.
+
+#page {
+	.container-fluid; // #page acts as container-fluid
+	background-color: @gu-sheet-bg;
+
+	// display a larger padding only at >= 922px screens (not print)
+	@media screen and (min-width: @screen-md-min) {
+		padding: 0 @gu-large-padding;
+	}
+
+	// display the body background only with large screens
+	@media screen and (min-width: 1085px) {
+		max-width: 90%;
+	}
+}
+
+#topalert {
+	/* Can be filled with .alert divs to display some generic warning */
+	box-shadow: 0 0 27px rgba(54, 54, 54, 0.36);
+
+	.alert {
+		border-radius: 0;
+	}	
+}
+
+#header {
+	.row; // #header acts as row
+
+	position: relative;
+	background-color: @gu-header-bg; /* fallback, falls image nicht geht */
+	background-image: @gu-header-image;
+	background-repeat: repeat-x;
+	color: #fff;
+
+	@media print {
+		// header contains basically no information.
+		display: none;
+	}
+
+	@media (min-width: @screen-md-min) {
+		margin: 0 (-@gu-large-padding);
+		padding: 0 (@gu-large-padding - @grid-gutter-width/2);
+	}
+
+	&, > div {
+		@media (max-width: @screen-xs-max) {	
+			height: 100px;
+		}
+		@media (min-width: @screen-sm-min) {
+			height: @gu-header-height;
+		}
+	}
+
+	// semantic CSS:
+	> div.brands-column {
+		// cannot extend dynamically generated classes due to
+		// ticket https://github.com/less/less.js/issues/2200,
+		// must duplicate code hre.
+		.make-sm-column(9);
+		.make-xs-column(4);
+	}
+	> div.sidebar-column {
+		.make-sm-column(3);
+		.make-xs-column(8);
+	}
+
+	a.logo {
+		display: block;
+		outline: medium none;
+
+		@media (max-width: @screen-xs-max) {
+			// smaller version
+			height: 96px;
+			img {
+				margin: 8px 0 0 0px;
+				max-width: 100%;
+			}
+		}
+
+		@media (min-width: @screen-sm-min) {
+			// GU version
+			border-right: 1px solid #ffffff;
+			height: 104px;
+			left: 40px;
+			position: absolute;
+			top: 13px;
+			width: 234px;
+
+			img {
+				border: medium none;
+				display: block;
+				margin: 8px 20px 20px 40px;
+			}
+		}		
+	}
+
+	/* Optional second Logo on the right, this should have roughly
+	   the same dimensions as the primary logo. The official website does
+	   not have a second logo but many GU websites do have one. */
+	a.second-logo {
+		border-left: 1px solid #fff;
+		position: absolute;
+		left: 737px;
+		top: 13px;
+		height: 104px;
+
+		img {
+			display: block;
+			margin: 4px 0 0 24px;
+		}
+
+		@media (max-width: @screen-sm-min) {
+			/* do not show on smaller screens */
+			display: none;
+		}
+	}
+
+
+	h1.department {
+		.hidden-xs;
+		color: #ffffff;
+		display: block;
+		font-family: "Georgia";
+		font-size: 18px;
+		font-weight: normal;
+		height: 80px;
+		left: 316px;
+		line-height: 16px;
+		position: absolute;
+		top: 41px;
+		width: 400px;
+		margin: 0;
+
+		a {
+			color: white;
+			font-weight: normal;
+		}
+
+		.departmentNumber {
+			font-size: 48px;
+			padding-left: 10px;
+			position: relative;
+			top: 12px;
+		}
+	}
+}
+
+#sidebar-header {
+	/* Header-Bereich der Sidebar */
+	position: absolute;
+	bottom: 0; left: 0;
+	width: 100%;
+	padding: 0 (@grid-gutter-width / 2);
+
+	section.status {
+		/* Ersetzt quasi den Suchbereich */
+		background-color: @gu-sheet-bg;
+		border-radius: 6px;
+		padding: 7px 15px;
+		margin-bottom: 8px;
+		color: @text-color;
+
+		a.field {
+			&:link, &:visited {
+				background-color: white;
+				border: 1px solid #aaa;
+				padding: 0 5px;
+				color: @text-color;
+			}
+			&:hover, &:active, &:focus {
+				border: 1px solid red;
+			}
+		}
+	}
+
+	ul.nav {
+		/* #header ul.subNavigation in GU design */
+		padding: 5px 10px 0;
+		background-color: @gu-sheet-bg;
+		border-radius: 6px 6px 0 0;
+
+		//& > li > a {
+		//	padding: 5px 10px;
+		//}
+	}
+}
+
+.nav-onetab {
+	> li {
+		float: left;
+
+		> a {
+			font-size: 12px;
+			font-weight: bold;
+			padding: 2px;
+
+			&:hover, &:focus {
+				background-color: transparent;
+			}
+		}
+		+ li {
+			margin-left: .5em;
+		}
+	}
+}
+
+
+#sidebar-header, #sidebar {
+	font-size: 90%; /* Schriftgroesse wie bei GU */
+}
+
+#content {
+	.row;
+	padding-top: 20px;
+
+	> div.main-column {
+		.make-sm-column(9);
+	}
+	> div.sidebar-column {
+		.make-sm-column(3);
+	}
+}
+
+/* was in #content */
+h2 {
+	font-family: Georgia,serif;
+	font-size: 26px;
+	font-weight: normal;
+	line-height: 28px;
+
+	margin-bottom: 20px;
+	padding-left: 40px;
+	padding-top: (11px + 20px);
+	margin-top: 25px;
+
+}
+
+h2 + p, p.subtext {
+	color: #4d4d4d;
+	font-style: italic;
+	margin-bottom: 15px;
+	margin-left: 40px;
+	margin-top: -15px;
+}
+
+
+#content a.photo {
+	max-width: 50%;
+
+	img {
+		width: 280px;
+	}
+}
+
+/* "Dateboxen" der GU */
+.dateBox {
+	float: left;
+	height: 60px;
+	position: relative;
+	width: 50px;
+
+	line-height: 14px;
+	&, .day, .month { box-sizing: content-box }
+
+	.day {
+		background-color: #fff;
+		border: 1px solid #f3c039;
+		color: #25172c;
+		display: block;
+		font-family: Georgia,serif;
+		font-size: 24px;
+		font-weight: normal;
+		height: 23px;
+		left: 0;
+		padding: 5px 0 3px;
+		position: absolute;
+		text-align: center;
+		top: 20px;
+		width: 40px;
+	}
+
+	.month {
+		background-color: #f3c039;
+		border: 1px solid #f3c039;
+		color: #25172c;
+		display: block;
+		height: 14px;
+		left: 0;
+		padding: 3px 0;
+		position: absolute;
+		text-align: center;
+		text-transform: uppercase;
+		top: 0;
+		width: 40px;
+	}
+}
+
+ul.events {
+	/* Event-Formatierung */
+	h4 { margin-top: 0;} 
+	p { clear: left; }
+
+	@media (min-width: @screen-sm-min) {
+		.panel-body {
+			min-height: 14em;
+		}
+	}
+}
+
+.nav-horizontal {
+	// GU-like "main navigation"
+	margin-top: -20px;
+	margin-bottom: 30px;
+
+	> li {
+		float: left;
+
+		> a {
+			.gradient(#d1d2d3; #ebecec);
+
+			color: #25172c;
+			font-size: 10px;
+			height: 60px;
+			margin-right: 3px;
+			padding: 0 12px;
+			position: relative;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: bold;
+
+			/* Meine Loesung fuer den Text nach unten: Padding (geht nur wenn Text einzeilig) */
+			padding-top: 42px;
+
+			&:hover {
+				color: #005eaa;
+			}
+		}
+		&:first-child > a {
+			border-radius: 0 0 0 6px;
+		}
+		&:last-child > a {
+			border-radius: 0 0 6px 0;
+		}
+		
+		// Active state
+		&.active > a {
+			&, &:hover, &:focus {
+				.gradient(#ebecec, #d1d2d3);
+			}
+		}
+	}
+}
+
+/// FOOTER
+
+#footer {
+	background-color: @footer-bg;
+	padding-top: 1px;
+
+	@media (min-width: @screen-md-min) {
+		margin: 30px (-@gu-large-padding) 0;
+	}
+	@media (max-width: @screen-sm-max) {
+		margin: 0 (-@grid-gutter-width/2);
+	}
+
+	@media print {
+		// footer contains basically no information
+		display: none;
+	}
+
+	section.band {
+		margin: 40px 0;
+		padding: 5px 40px;
+		background-color: @footer-band-bg;
+
+		&, a {
+			color: white;
+			font-size: 10px;
+			font-weight: bold;
+		}
+	}
+}

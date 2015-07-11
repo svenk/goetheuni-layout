@@ -1,0 +1,103 @@
+
+// vertical gradient
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+// the caret mixin (e.g. for sidebars)
+.create_caret(@size, @color, @left_pos) {
+	border: @size solid transparent;
+	display: inline-block;
+	width: 0; height: 0;
+	vertical-align: top;
+
+	// caret up
+	border-bottom: @size solid;
+	border-bottom-color: @color;
+
+	// positioning the caret
+	position: absolute;
+	top: -2*@size; left: @left_pos;
+
+	@media print {
+		// do not show on print
+		display: none;
+	}
+}
+
+
+// ul,li system als grid elements nutzbar machen
+ul.row {
+	margin-bottom: 0; padding: 0;
+	list-style: none;
+}
+
+// print layout fixes
+@media print {
+	a[href] {
+		&:link, &:visited {
+			text-decoration: underline;
+			color: darken(@gu-blue, 50%); /* some color */
+		}
+		&:after { text-decoration: none; }
+	}
+
+	.panel {
+		border: 1px solid #eee;
+	}
+}
+
+
+// Grids mit unterschiedlichen @grid-columns
+// Nach Bedarf erweitern aus bootstrap/mixins/grid.less
+
+.N-make-xs-column(@columns; @gutter: @grid-gutter-width; @num-columns: @grid-columns) {
+  position: relative;
+  float: left;
+  width: percentage((@columns / @num-columns));
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+
+.N-make-sm-column(@columns; @gutter: @grid-gutter-width; @num-columns: @grid-columns) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-sm-min) {
+    float: left;
+    width: percentage((@columns / @num-columns));
+  }
+}
+
+.N-make-md-column(@columns; @gutter: @grid-gutter-width; @num-columns: @grid-columns) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-md-min) {
+    float: left;
+    width: percentage((@columns / @num-columns));
+  }
+}
+
+.N-make-lg-column(@columns; @gutter: @grid-gutter-width; @num-columns: @grid-columns) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-lg-min) {
+    float: left;
+    width: percentage((@columns / @num-columns));
+  }
+}
+

@@ -1,0 +1,341 @@
+// Zur Einbindung, erweitert Bootstrap-Panel-Stile
+
+.panel-box {
+	.panel-body {
+		background: @gu-panel-box-bg;
+		border-radius: 6px;
+	}
+}
+
+/* make a grid look. Only at big screens */
+@media (min-width: @screen-md-min) {
+	.panel-grid {
+		// can hold a grid which will show no spacing
+		> .panel-body {
+			background: @gu-panel-box-bg;
+
+			// wird bereits durch die nested .row, .col-* und .panel erwirkt
+			padding: 0 (@grid-gutter-width/2);
+
+			// let the rows have some spacing
+			> .row {
+				// not really useful.
+			
+			}
+
+
+			.row {
+				display: table;
+			}
+			.row > li, .row > div /* aka .col-* */ {
+				display: table-cell; float: none;
+				border-right: 1px solid @gu-sheet-bg;
+				border-bottom: 1px solid @gu-sheet-bg;
+				vertical-align: top;
+			}
+
+			.panel-box {
+				margin-bottom: 0;
+				box-shadow: none;
+			}
+
+			/* Corrections for embedded thumbnails */
+			.panel-thumbtalk {
+				padding: (@grid-gutter-width/2) 0;
+
+				.panel-body {
+					background: @gu-panel-box-bg;
+					background-color: @gu-panel-box-bg;
+				}
+				.panel-thumbnail {
+					background: @gu-panel-box-bg;
+					border-radius: 0; 
+					a { border-width: 0; }
+				}
+			}
+		}
+	} // .panel-grid
+} /* /@media for .panel-grid */
+
+.panel-nested {
+	// as an alterantive or supplementary to .panel-body
+	// To be used when nesting panels, like
+	// .panel .panel-xyz > .panel-body/.panel-nested > .panel .panel-abc > .panel-body > content
+
+	padding: 0;
+
+	> .panel {
+		border: 0;
+		margin-bottom: 0;
+	}
+}
+
+.panel-teaser, .panel-regular {
+	.panel-header {
+		background-color: @gu-grey;
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		padding: 30px 40px 20px;
+
+		h1, h2 {
+			color: #25172c;
+			font-family: Georgia,serif;
+			font-size: 26px;
+			font-weight: normal;
+			line-height: 28px;
+			margin: 0; padding: 0;
+		}
+	}
+	.panel-body {
+		background-color: white;
+	}
+}
+
+.panel-regular {
+	h2 + p, p.subtext {
+		margin: 0; margin-left: 1em;
+		font-size: 150%;
+	}
+
+	.panel-header {
+		padding-left: 20px;
+		background-color: mix(@gu-grey, @gu-sheet-bg, 50%);
+	}
+	.panel-body {
+		background-color: mix(white, @gu-sheet-bg, 50%);
+	}
+}
+
+.panel-sidebar {
+	margin-bottom: 15px;
+
+	h2 {
+		font-family: "Times New Roman, serif";
+		font-size: 16px;
+		font-weight: normal;
+		margin: 0;
+		padding: 0 10px 12px;
+		text-transform: uppercase;
+	}
+
+	.panel-body {
+		background-color: @sidebar-box-bg;
+		border-radius: 6px;
+
+		position: relative; // for caret
+
+		.caret {
+			.create_caret(8px, @sidebar-box-bg, 24px);
+
+		}
+	}
+
+	/* blue (dark, important) variant */
+	&.blue {
+		.panel-body {
+			background-color: @sidebar-box-blue-bg;
+			color: white;
+
+			.caret {
+				.create_caret(8px, @sidebar-box-blue-bg, 24px);
+			}
+
+			a {
+				&:link, &:visited {
+					color: white;
+				}
+				&:hover, &:active, &:focus {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	address { margin-bottom: 0; }
+}
+
+// this can also be elsewhere then sidebar
+.panel {
+	ul.icons {
+		.fa-ul;
+		margin-left: 0;
+
+		i { /* .fa-li; sic, muss alles raus! */ .fa; }
+		i:before { content: @fa-var-angle-right; }
+	}
+}
+
+/* JC Boxen, allg. Boxen mit Rand */
+.panel-talk {
+	// .row; // will den margin-left-right eiglt. gar nicht
+	overflow: hidden;
+	margin-bottom: 1px;
+
+	.panel-body {
+		background: white;
+		border-radius: 6px;
+		padding: 0;
+
+		@media (min-width: @screen-md-min) {
+			border-radius: 0 6px 6px 0;
+		}
+	}
+
+	.sep { .sr-only(); }
+
+	.headline {
+		.N-make-md-column(2; @num-columns: 16);
+
+		@media (min-width: @screen-md-min) {
+			padding: (@grid-gutter-width/2);
+
+			background-color: @gu-grey2;
+			background-image: url("data:image/gif;base64,R0lGODlhtgABALMAAOvs7efq7Onr7N7l6dfg59ri6OXp6+Ln6uzt7QAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAC2AAEAAAQVEMlJq7046827/2AoSgAgBMYxFEQEADs=");
+			background-repeat: repeat-y;
+			background-position: top right;
+
+			// 100% height simulieren
+			margin-bottom: -9999px;
+			padding-bottom: 9999px;
+		}
+
+		span.t {
+			font-weight: bold;
+			display: block;
+		}
+	}
+
+	ul.files {
+		.fa-ul;
+
+		i.icon { .fa-li; .fa; }
+		/* allgemein: */
+		i:before { content: @fa-var-file-o; }
+		/* speziell: */
+		li.source i:before { content: @fa-var-file-zip-o; }
+		li.notes i:before { content: @fa-var-file-text-o; }
+		li.folder i:before { content: @fa-var-folder-o; }
+	}
+
+	div.preview {
+		.make-sm-column(6);
+		.N-make-md-column(8; @num-columns: 16);
+		.media;
+		margin-top: 0; // wer auch immer den hinzufuegt
+
+		a.thumb {
+			.media-left;
+
+			img {
+				.media-object;
+				max-width: 100%;
+				box-shadow: 0 1px 4px #9d9d9d;
+			}
+		}
+		h3 {
+			.media-body;
+			margin: 0;
+			font-size: 18px;
+
+			strong { display: block; }
+		}
+	}
+	div.notes {
+		.make-sm-column(6);
+		.N-make-md-column(6; @num-columns: 16);
+	}
+	.notes.only {
+		.make-sm-column(12);
+		.N-make-md-column(14; @num-columns: 16);
+	}
+
+	div {
+		&.preview, &.notes, &.notes.only, {
+			padding: (@grid-gutter-width/2);
+		}
+	}
+}
+
+/* panel-with-bar ist ein besseres .panel-talk.
+   Letzterer sollte zu diesem Format migrieren.
+   Vorteil: Nicht so viel Nesting!  */
+
+.panel-with-bar {
+	overflow: hidden;
+	margin-bottom: 1px;
+
+	background: white;
+	border: none;
+	border-radius: 6px;
+	padding: 0;
+
+	@media (min-width: @screen-md-min) {
+		border-radius: 0 6px 6px 0;
+	}
+
+
+	.panel-header {
+		.make-sm-column(3);
+
+		@media (min-width: @screen-md-min) {
+			padding: (@grid-gutter-width/2);
+
+			background-color: @gu-grey2;
+			background-image: url("data:image/gif;base64,R0lGODlhtgABALMAAOvs7efq7Onr7N7l6dfg59ri6OXp6+Ln6uzt7QAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAC2AAEAAAQVEMlJq7046827/2AoSgAgBMYxFEQEADs=");
+			background-repeat: repeat-y;
+			background-position: top right;
+
+			// 100% height simulieren
+			margin-bottom: -9999px;
+			padding-bottom: 9999px;
+		}
+	}
+
+	.panel-body {
+		.make-sm-column(9);
+	}
+
+	& + & {
+		margin-top: .7em;
+	}
+}
+
+/* Talk-Bereich mit Thumbnails von talks (nicht JC!) */
+.panel-thumbtalk {
+	.panel-thumbnail, .panel-body {
+		background-color: #ededed;
+	}
+
+	.panel-thumbnail {
+		padding-bottom: 6px;
+		overflow: hidden; /* <a> Schatten nur nach unten */
+		border-radius: 6px 6px 0 0; // wg background
+
+		a {
+			display: inline-block;
+			border: 6px solid #e3e3e3;
+			border-radius: 6px 6px 0 0;
+			border-bottom: 2px;
+
+
+			img {
+				box-shadow: 0 0 10px #C4E0F8;
+			}
+
+			&:hover, &:focus, &:active {
+				border-color: white;
+				opacity: .9;
+			}
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.panel-thumbnail + .panel-body {/* nur wenn panel-body auf panel-thumbnail folgt */
+		//background-color: #ededed; // absetzen von weissen thumbs
+		border-radius: 0 0 6px 6px;
+		padding-top: 0; // generated by .panel-thumbnail a
+	}
+}
