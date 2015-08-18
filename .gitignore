@@ -1,0 +1,6 @@
+# Git ignore for Goethe University Bootstrap design
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~

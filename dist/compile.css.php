@@ -9,15 +9,15 @@
  // Parameter:
 
  // Temporaere nur interne Cache-Datei auf dem Server
- $cssfile = dirname(__FILE__).'/cache/generated.css';
+ $cssfile = 'goetheuni-layout.min.css';
  // Einstiegs-LESS-File, die kompiliert wird. Sie kann per @include
  // andere CSS/LESS-Files einbinden, diese Einbindungen werden aufgeloest.
- $lessfile = "less/main.less";
+ $lessfile = "../less/main.less";
  // Alle Dateien, die auf diese Globbing-Pattern passen, werden bei jedem
  // PHP-Aufruf auf Aenderungen ueberprueft.
- $watch_files = glob("less/*");
+ $watch_files = glob("../less/*");
  // URL root to prepend to any relative image or @import urls in the .less file.
- $url_root = '/~koeppel/src/';
+ $url_root = '/customizing/goetheuni-layout/less';
 
  // kein Support mehr fuer weird @imports an dieser Stelle ($less_import_dir)
 
@@ -40,7 +40,7 @@
 
  if($regenerate) {
     // LESS-Files erzeugen
-    require "lib/less.php/Less.php";
+    require "../externals/less.php/Less.php";
     $options = array();
     if(!$debug)
         $options['compress'] = true;
@@ -55,7 +55,7 @@
         $out = $parser->getCss();
     } catch(Exception $e) {
         $error = $e->getMessage();
-	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+	header((isset($_SERVER['SERVER_PROTOCOL'])?$_SERVER['SERVER_PROTOCOL']:'HTTP') . ' 500 Internal Server Error', true, 500);
 	print "Less compilation error: ".$error;
 	exit;
     }
