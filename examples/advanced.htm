@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Advanced demonstration of the goetheuni-layout</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<!-- Goethe Layout: https://github.com/svenk/goetheuni-layout -->
+	<link type="text/css" href="/~koeppel/src/lib/goetheuni-layout/dist/goetheuni-layout.min.css" rel="stylesheet">
+  </head>
+  <body>
+        <div id="page">
+	<div id="header">
+		<div class="brands-column">
+			<a class="logo" title="Goethe-Universität Frankfurt am Main" href="#">
+				<img height="76" src="//itp.uni-frankfurt.de/~koeppel//logos/goethe-uni/uni_head_official-colorinverted.svg" alt="Goethe-Universität Frankfurt am Main">
+			</a>
+
+			<h1 class="department">
+				<span class="departmentTitle"><a href="http://th.physik.uni-frankfurt.de/">Institut für theoretische Physik</a></span><br>
+				<span class="departmentName"><a href="http://www.physik.uni-frankfurt.de/">Fachbereich</a></span>
+				<span class="departmentNumber"><a href="http://www.physik.uni-frankfurt.de/">13</a></span>
+			</h1>
+		</div>
+		<div class="sidebar-column">
+			<div id="sidebar-header">
+				<ul class="nav nav-onetab">
+					<li><a href="basic.htm"><i class="fa fa-chevron-left"></i> Basic</a>
+					<li><a href="expert.htm"><i class="fa fa-chevron-right"></i> All features</a>
+				</ul>
+			</div>
+		</div>
+	</div><!--/header-->
+	<div id="content">
+		<div class="main-column">
+
+		<ul class="nav nav-horizontal">
+			<li><a href="#">Horizontal navigation</a>
+			<li class="active"><a href="#start">Start</a>
+			<li><a href="#">Item 2</a>
+			<li><a href="#">Item 3</a>
+		</ul>
+			
+		<div class="panel panel-teaser">
+			<div class="panel-header">
+				<h1>Advanced example</h1>
+				<p>A demonstration of the goetheuni-layout</p>
+			</div>
+			<div class="panel-body">
+				<p>This is a demonstration about some advanced features of the <a href="https://github.com/svenk/goetheuni-layout">goetheuni-layout</a>.
+				It shall be seen in contrast to the <a href="basic.htm">basic example</a> which has the most compact source code.
+				Compared to the basic example, this advanced version features:
+
+				<ul>
+					<li><del><b>A second logo in the header.</b></del> Consider all style elements as optional: You can remove
+					    the department name as well as the <em>Tabnav</em> navigation just by removing them from the
+					    HTML source.
+					<li><b>A sidebar with more panels.</b> You can add as many panels as you want. If you want to use
+					    no sidebar at all, give the <a href="expert.htm">expert example</a> a try.
+				</ul>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-5">
+				<img src="https://placeimg.com/640/480/tech" style="width: 100%" class="img-rounded">
+			</div>
+			<div class="col-md-7">
+				<div class="panel panel-box">
+					<div class="panel-body">
+						<h3>It's all about the grid</h3>
+
+						<p>This design is based on <a href="http://getbootstrap.com/">Bootstrap 3</a>. It heavily
+						relies on the <a href="http://getbootstrap.com/css/#grid">mobile first fluid grid system</a>.
+						This means all horizontal space is divided in <strong>12 equal width basic columns</strong> and one
+						can define <em>boxes</em> (or <em>panels</em>) accross any integer number of columns. For example,
+						this white box is <strong>7 columns wide</strong>, while the small one on the left makes <strong>5 columns</strong>,
+						summing up in total to the number <strong>12</strong>.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div><!-- .main-column -->
+		<div class="sidebar-column">
+			<div class="panel panel-sidebar blue">
+				<h2>Main panel</h2>
+				<div class="panel-body">
+					<span class="caret"></span>	
+	
+					<p>This panel has the inverted colors for attracting the user's attention immediately.
+				</div>
+			</div>
+
+			<div class="panel panel-sidebar">
+				<h2>Additional panel</h2>
+				<div class="panel-body">
+					<span class="caret"></span>	
+	
+					<p>This is the most simple sidebar box. They are used heavily on the official Goethe university
+					website. You can put anything in this sidebar, but some elements are very typical, for example
+
+					<ul class="icons">
+						<li><a href="#"><i></i> simple link lists</a>
+						<li><a href="#"><i></i> simple link lists</a>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-sidebar">
+				<h2>Picture panel</h2>
+				<div class="panel-body">
+					<span class="caret"></span>	
+
+					<p>You can put anything in this sidebar, for example pictures:</p>
+
+					<a href="http://lorempixel.com"><img src="http://lorempixel.com/250/150/" style="width:100%"></a>
+				</div>
+			</div>
+		</div>
+	</div><!-- end of #content -->
+	<div id="footer">
+		<section class="band">
+			<div class="pull-right">
+				<a href="#">Footer link 1</a>
+			 	| <a href="#">Footer link 2</a>
+			</div>
+			Die Goethe-Universität Frankfurt am Main
+		</section>
+		&nbsp; <!-- place for more content -->
+	</div><!-- #footer -->
+   	</div><!-- #page -->
+</body>
+</html>
+
+
